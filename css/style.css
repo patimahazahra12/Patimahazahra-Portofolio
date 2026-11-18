@@ -1,0 +1,552 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f7f3fa;
+  color: #403847;
+  line-height: 1.6;
+  padding-top: 70px;
+  overflow-x: hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  top: 80px;
+  right: -120px;
+  background: #e5d5ed;
+  border-radius: 50%;
+  opacity: 0.45;
+  z-index: -5;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  bottom: 20px;
+  left: -120px;
+  background: #dce8d2;
+  border-radius: 50%;
+  opacity: 0.4;
+  z-index: -5;
+}
+
+/* ================= NAVBAR ================= */
+
+navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 2px solid #e6d9eb;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1050px;
+  margin: auto;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: #8d70a3;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #5f5865;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #c27fa3;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+  padding: 30px 25px;
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  min-height: 570px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Lingkaran dekorasi besar */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #eee5f4;
+  border: 3px solid #d8b9e2;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+/* Lingkaran dekorasi kecil */
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 8%;
+  bottom: 60px;
+  background: #f2dce7;
+  border: 3px solid #d59ab5;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* ================= FOTO ================= */
+
+.profile-img {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 7px solid #ffffff;
+  outline: 3px solid #d5b9df;
+  box-shadow: 0 0 0 10px rgba(215, 190, 225, 0.25),12px 15px 30px rgba(80, 60, 90, 0.15);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  transition: 0.35s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.04) rotate(2deg);
+}
+
+/* ================= HERO TEXT ================= */
+
+.hero > * {
+  position: relative;
+  z-index: 10;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  font-weight: 700;
+  background: linear-gradient(
+    90deg,
+    #d27fa6,
+    #a687c0,
+    #77a9bd,
+    #91a77d
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 10;
+}
+
+.hero p {
+  max-width: 520px;
+  color: #403847;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 10;
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title {
+  text-align: center;
+  color: #514958;
+  font-size: 2rem;
+  margin-bottom: 45px;
+  font-weight: 600;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 4px;
+  margin: 10px auto;
+
+  background: linear-gradient(
+    90deg,
+    #d590b0,
+    #a687c0,
+    #77a9bd
+  );
+
+  border-radius: 20px;
+}
+
+/* ================= CARD ================= */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.card {
+  position: relative;
+  background: #ffffff;
+  padding: 28px;
+  border: 2px solid #e3d7e8;
+  border-radius: 18px;
+  box-shadow: 7px 7px 0 #e5d8ec;
+  transition: 0.3s ease;
+  overflow: hidden;
+}
+
+/* Dekorasi lingkaran di card */
+
+.card::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  right: -25px;
+  top: -25px;
+  background: #eee4f3;
+  border: 2px solid #d8c4e1;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: -10px;
+  bottom: -10px;
+  background: #f2dce7;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: #c9acd6;
+  box-shadow:
+    10px 10px 0 #d9c5e2;
+}
+
+.card h3,
+.card .subtitle,
+.card p,
+.tech-tags {
+  position: relative;
+  z-index: 5;
+}
+
+.card h3 {
+  color: #403847;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.card .subtitle {
+  color: #b87898;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #625b68;
+  font-size: 0.9rem;
+}
+
+/* ================= PENDIDIKAN ================= */
+
+#education {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Lingkaran besar di belakang pendidikan */
+
+#education::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #eee6f4;
+  border: 3px solid #cdb6dc;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+#education .grid-container {
+  display: flex;
+  justify-content: center;
+}
+
+#education .card {
+  width: 75%;
+  padding: 40px;
+  text-align: center;
+  background: #ffffff;
+  border: 2px solid #d8c6e1;
+  border-radius: 22px;
+  box-shadow: 8px 8px 0 #dce8df;
+  position: relative;
+  z-index: 10;
+}
+
+#education .card::before {
+  background: #dce8f0;
+  width: 70px;
+  height: 70px;
+  right: 20px;
+  top: -20px;
+}
+
+#education .card h3 {
+  color: #403847;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+#education .card .subtitle {
+  color: #b87898;
+  position: relative;
+  z-index: 10;
+}
+
+#education .card p {
+  color: #625b68;
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* ================= TAG ================= */
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.tag {
+  background: #eee5f3;
+  color: #765c87;
+  padding: 5px 12px;
+  border-radius: 15px;
+  border: 1px solid #d7c7e0;
+  font-size: 0.75rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-list {
+  max-width: 800px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.contact-item {
+  padding: 16px;
+  background: #ffffff;
+  color: #5f5865;
+  text-decoration: none;
+  border: 2px solid #e2d7e7;
+  border-radius: 18px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.contact-item:hover {
+  background: #e9def0;
+  color: #765982;
+  border-color: #c7acd4;
+  transform: translateY(-4px);
+}
+
+/* ================= LOGO GROUP ================= */
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo-group img {
+  width: 55px;
+  height: auto;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  background: #453e4d;
+  color: #ddd4e2;
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 50px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+  .nav-container {
+    padding: 14px 18px;
+  }
+
+  .nav-links {
+    gap: 9px;
+  }
+
+  .nav-links a {
+    font-size: 0.68rem;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .hero {
+    min-height: auto;
+    flex-direction: column;
+    text-align: center;
+    gap: 35px;
+    padding: 60px 0;
+  }
+
+  .hero::before {
+    width: 220px;
+    height: 220px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero::after {
+    width: 70px;
+    height: 70px;
+    right: 5%;
+  }
+
+  .profile-img {
+    width: 190px;
+    height: 190px;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero p {
+    margin: auto;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  #education::before {
+    width: 220px;
+    height: 220px;
+  }
+
+  #education .card {
+    width: 100%;
+  }
+
+  .contact-list {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0.8rem;
+}
+
+.nav-links {
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.container {
+  padding-top: 8rem;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+}
+
+.hero.img {
+  width: 180px !important;
+  height: 180px !important;
+}
+}

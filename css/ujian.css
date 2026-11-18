@@ -1,0 +1,11 @@
+.kotak {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.kotak img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+}

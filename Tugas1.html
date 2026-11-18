@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            background-color: #d9e6f2;
+            font-family: "Times New Roman", serif;
+        }
+
+        .container {
+            width: 900px;
+            max-width: 95%;
+            margin: 25px auto;
+            padding: 25px 30px;
+            background-color: white;
+            border: 1px solid #9bb8d3;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 38px;
+            color: #345b83;
+            margin-bottom: 45px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 22px;
+            gap: 8px;
+        }
+
+        .row > label {
+            width: 220px;
+            flex-shrink: 0;
+            font-size: 20px;
+            color: #40566b;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select,
+        textarea {
+            background-color: #edf5fb;
+            border: 1px solid #a9c3d9;
+            padding: 7px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        .full {
+            width: 490px;
+            max-width: 100%;
+            height: 35px;
+        }
+
+        .name-input {
+            width: 230px;
+            min-width: 0;
+            height: 35px;
+        }
+
+        .date-input {
+            width: 75px;
+            height: 35px;
+        }
+
+        .year-input {
+            width: 110px;
+            height: 35px;
+        }
+
+        .phone-code {
+            width: 55px;
+            height: 35px;
+        }
+
+        .phone-number {
+            width: 410px;
+            max-width: 100%;
+            height: 35px;
+        }
+
+        .hint {
+            color: #718ba3;
+            font-size: 15px;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .options {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+            color: #40566b;
+        }
+
+        .options input {
+            accent-color: #547fa5;
+        }
+
+        .options label {
+            width: auto;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .course {
+            width: 510px;
+            max-width: 100%;
+            height: 35px;
+        }
+
+        input[type="file"] {
+            font-size: 14px;
+            color: #40566b;
+            max-width: 100%;
+        }
+
+        .address-row {
+            align-items: flex-start;
+        }
+
+        .address-row > label {
+            padding-top: 8px;
+        }
+
+        textarea {
+            width: 430px;
+            max-width: 100%;
+            height: 100px;
+            resize: vertical;
+        }
+
+        .button-row {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 9px 25px;
+            background-color: #547fa5;
+            color: white;
+            border: 1px solid #426b90;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #345b83;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                max-width: 100%;
+                padding: 18px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .row {
+                flex-wrap: wrap;
+            }
+
+            .row > label {
+                width: 100%;
+            }
+
+            .full,
+            .course,
+            textarea {
+                width: 100%;
+            }
+
+            .name-input {
+                width: 40%;
+            }
+
+            .phone-number {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .hint {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Student Registration Form</h1>
+
+    <form>
+
+        <div class="row">
+            <label>Roll no. :</label>
+            <input type="text" class="full">
+        </div>
+
+        <div class="row">
+            <label>Student name :</label>
+            <input type="text" class="name-input"
+                   placeholder="First Name">
+            <span>-</span>
+            <input type="text" class="name-input"
+                   placeholder="Last Name">
+        </div>
+
+        <div class="row">
+            <label>Father's name :</label>
+            <input type="text" class="full">
+        </div>
+
+        <div class="row">
+            <label>Date of birth :</label>
+            <input type="text" class="date-input"
+                   placeholder="Day">
+            <span>-</span>
+            <input type="text" class="date-input"
+                   placeholder="Month">
+            <span>-</span>
+            <input type="text" class="year-input"
+                   placeholder="Year">
+            <span class="hint">(DD-MM-YYYY)</span>
+        </div>
+
+        <div class="row">
+            <label>Mobile no. :</label>
+            <input type="text" class="phone-code"
+                   value="+62">
+            <span>-</span>
+            <input type="tel" class="phone-number">
+        </div>
+
+        <div class="row">
+            <label>Email id :</label>
+            <input type="email" class="full">
+        </div>
+
+        <div class="row">
+            <label>Password :</label>
+            <input type="password" class="full">
+        </div>
+
+        <div class="row">
+            <label>Gender :</label>
+            <div class="options">
+                <input type="radio" name="gender" id="male">
+                <label for="male">Male</label>
+
+                <input type="radio" name="gender" id="female">
+                <label for="female">Female</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label>Department :</label>
+            <div class="options">
+                <input type="checkbox" id="cse">
+                <label for="cse">CSE</label>
+
+                <input type="checkbox" id="it">
+                <label for="it">IT</label>
+
+                <input type="checkbox" id="ece">
+                <label for="ece">ECE</label>
+
+                <input type="checkbox" id="civil">
+                <label for="civil">Civil</label>
+
+                <input type="checkbox" id="mech">
+                <label for="mech">Mech</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label>Course :</label>
+            <select class="course">
+                <option value="">Select Current Course</option>
+                <option>Computer Science</option>
+                <option>Information Technology</option>
+                <option>Software Engineering</option>
+                <option>Web Development</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label>Student photo :</label>
+            <input type="file" accept="image/*">
+        </div>
+
+        <div class="row">
+            <label>City :</label>
+            <input type="text" class="full">
+        </div>
+
+        <div class="row address-row">
+            <label>Address :</label>
+            <textarea></textarea>
+        </div>
+
+        <div class="button-row">
+            <button type="submit">Register</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

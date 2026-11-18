@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Siswa</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #e8edf5;
+            padding: 20px;
+            color: #344f70;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+        }
+
+        h1 {text-align: center; }
+        .form {
+            background: #f7f9fc;
+            padding: 20px;
+            border: 1px solid #d9e2ef;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        input,select {
+            padding: 8px 12px;
+            border: 1px solid #d9e2ef;
+            border-radius: 4px;
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        .grid input:not([type="radio"]) ,
+        .grid select {
+            width: 100%;
+        }
+
+        button {
+            padding: 8ox 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background: #547fa5;
+            color: white;
+        }
+
+        .hapus { background: #d96b79;}
+        .reset { background: #ddd; color: #333; }
+
+        .tabel { margin-top: 30px;}
+
+        .cari {
+            float: right;
+            width: 200px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 10px 6px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {background: #e8eef7; }
+
+        @media(max-width: 650px) {
+            .grid { grid-template-columns: 1fr; }
+            .container { padding: 12px; }
+            .tabel {overflow-x:auto; }
+            table {min-width: 650px; }
+            .cari  {float: none; width: 95%; }
+        }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>Tugas-Tugas!</h1>
+            <p style="text-align:center"> Gallery 1 photo</p>
+            <div class="from">
+                <h3> Tambah Data Siswa</h3>
+                <from id="form">
+                    <div class="grid">
+                        <div>
+                            <label>NIS</label>
+                            <input id="nis"
+        placeholder="Masukkan NIS" required>
+                        </div>
+
+                        <div>
+                            <label>Jenis Kelamin</label>
+                            <input type="radio" name="jk" 
+        value="Laki-Laki" required>
+                            Laki-Laki
+                            <input type="radio" name="jk"
+        Value="Perempuan">
+                            Perempuan
+                        </div>
+
+                        <div>
+                            <label>Nama Lengkap</label>
+                            <input type="date" id="tanggal"
+        required>
+                        </div>
+
+                        <div>
+                            <label>Tanggal Lahir</label>
+                            <input type="date" id="tanggal"
+        required>
+                        </div>
+
+                        <div>
+                            <label>Kelas</label>
+                            <select id="Kelas" required>
+                                <option value="">Pilih
+        kelas</option>
+                            <option>XI-RPL 1</option>
+                            <option>Xl-RPL 2</option>
+                            <option>Xl-RPL 3</option>
+                            <option>Xl-RPL 4</option>
+                            <option>Xl-TBSM 1</option>
+                            <option>Xl-TBSM 2</option>
+                            <option>Xl-ATPH</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+                <button>Simpan</button>
+                <button type="reset"
+        class="reset">Reset</button>
+            </from>
+        </div>
+
+        <div class="tabel">
+            <h3>Data Siswa</h3>
+            <input class="cari" id="cari"
+        placeholder="Cari Siswa...">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>NIS</th>
+                        <th>Nama Lengkap</th>
+                        <th>Kelas</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+            </tbody id="data">
+                    <td>
+                        <td>1</td><td>001</td><td>Andi 
+         Saputra</td>
+                        <td>Xl-RPl-3</td><td>Laki-Laki</td>
+        <td>09-25-2009</td>
+                        <td><button
+        onclick="edit(this)">Edit</button>
+                            <button class="hapus"
+        onclick="hapus(this)">Hapus</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>002</td><td>Patimah
+        Azahra</td>
+                        <td>Xl-RPl 3</td><td></td><td>Perempuan</td>
+        <td>08-01-2011</td>
+                        <td><button
+        onclick="edit(this)">Edit</button>
+                            <button class="hapus"
+        onclick="hapus(this)">Hapus</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="jumlah">Menampilkan 2 data siswa</p>
+        <div>
+    </div>
+
+    <script>
+        const form = document.getElemenByld("form") ;
+        const data = document.getElemenByld("data") ;
+        let pilihan = null;
+
+        form.onsubmit = funcatio(e) {
+            e.preventDefault();
+
+            
+        let nis = document.getElementById("nis").value;
+        let nama = document.getElementById("nama").value;
+        let kelas = document.getElementById("kelas").value;
+        let tanggal = document.getElementById("tanggal").value;
+        let jk = document.querySelector('input[name="jk"]:checked').value;
+
+        if (pilihan) {
+            pilihan.cells[1].textContent = nis;
+            pilihan.cells[2].textContent = nama;
+            pilihan.cells[3].textContent = kelas;
+            pilihan.cells[4].textContent = jk;
+            pilihan.cells[5].textContent = tanggal;
+            pilihan = null;
+        } else {
+            let baris = data.insertRow();
+            baris.innerHTML = `<td></td><td>${nis}</td><td>${nama}</td>
+            <td>${kelas}</td><td>${jk}</td><td>${tanggal}</td>
+            <td><button onclick="edit(this)">Edit</button>
+            <button class="hapus" onclick="hapus(this)">Hapus</button></td>`;
+        }
+
+        form.reset();
+        nomor();
+        cariData();
+    };
+
+    function edit(btn) {
+        pilihan = btn.closest("tr");
+        nis.value = pilihan.cells[1].textContent;
+        nama.value = pilihan.cells[2].textContent;
+        kelas.value = pilihan.cells[3].textContent;
+        tanggal.value = pilihan.cells[5].textContent;
+        document.querySelector(`input[name="jk"][value="${pilihan.cells[4].textContent}"]`).checked = true;
+    }
+
+    function hapus(btn) {
+        if (confirm("Hapus data ini?")) {
+            btn.closest("tr").remove();
+            nomor();
+            cariData();
+        }
+    }
+
+    function nomor() {
+        [...data.rows].forEach((r, i) => r.cells[0].textContent = i + 1);
+    }
+
+    document.getElementById("cari").oninput = cariData;
+
+    function cariData() {
+        let kata = cari.value.toLowerCase(), jumlah = 0;
+
+        [...data.rows].forEach(r => {
+            r.hidden = !r.textContent.toLowerCase().includes(kata);
+            if (!r.hidden) jumlah++;
+        });
+
+        document.getElementById("jumlah").textContent =
+            "Menampilkan " + jumlah + " data siswa";
+    }
+
+    form.onreset = () => pilihan = null;
+</script>
+
+</body>
+</html>
